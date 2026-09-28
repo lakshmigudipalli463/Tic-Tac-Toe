@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game-container">
+
+        <!-- HEADER -->
+        <header class="game-header">
+
+            <div class="logo">
+                <span class="logo-x">X</span>
+                <span class="logo-vs">VS</span>
+                <span class="logo-o">O</span>
+            </div>
+
+            <h1>TIC TAC TOE</h1>
+
+            <p>Classic game. New challenge.</p>
+
+        </header>
+
+
+        <!-- ========================= -->
+        <!-- PLAYER NAME SETUP -->
+        <!-- ========================= -->
+
+        <section id="playerSetup" class="player-setup">
+
+            <h2>Enter Player Names</h2>
+            <div class="game-mode">
+
+    <h3>Choose Game Mode</h3>
+
+    <div class="mode-buttons">
+
+        <button id="pvpButton" class="mode-button active">
+            👥 Player vs Player
+        </button>
+
+        <button id="computerButton" class="mode-button">
+            🤖 Player vs Computer
+        </button>
+        <div id="difficultySection" class="difficulty-section hidden">
+
+    <h3>Choose Difficulty</h3>
+
+    <div class="difficulty-buttons">
+
+        <button id="easyButton" class="difficulty-button active">
+            🟢 Easy
+        </button>
+
+        <button id="mediumButton" class="difficulty-button">
+            🟡 Medium
+        </button>
+
+        <button id="hardButton" class="difficulty-button">
+            🔴 Hard
+        </button>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+            <p class="setup-subtitle">
+                Choose your names before the game starts
+            </p>
+
+
+            <div class="name-inputs">
+
+                <!-- PLAYER X -->
+
+                <div class="name-box">
+
+                    <div class="player-symbol x-symbol">
+                        X
+                    </div>
+
+                    <label for="playerXName">
+                        Player 1
+                    </label>
+
+                    <input
+                        type="text"
+                        id="playerXName"
+                        placeholder="Enter your name"
+                        maxlength="15"
+                    >
+
+                </div>
+
+
+                <!-- VS -->
+
+                <div class="setup-vs">
+                    VS
+                </div>
+
+
+                <!-- PLAYER O -->
+
+                <div class="name-box" id="playerONameBox">
+
+                    <div class="player-symbol o-symbol">
+                        O
+                    </div>
+
+                    <label for="playerOName">
+                        Player 2
+                    </label>
+
+                    <input
+                        type="text"
+                        id="playerOName"
+                        placeholder="Enter your name"
+                        maxlength="15"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button id="startGameButton" class="start-game-button">
+                START GAME
+            </button>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- GAME AREA -->
+        <!-- ========================= -->
+
+        <section id="gameArea" class="game-area hidden">
+
+            <!-- PLAYERS -->
+
+            <div class="players">
+
+                <!-- PLAYER X -->
+
+                <div class="player-card player-x">
+
+                    <div class="player-symbol">
+                        X
+                    </div>
+
+                    <div class="player-info">
+
+                        <span class="player-label">
+                            PLAYER 1
+                        </span>
+
+                        <h2 id="displayPlayerX">
+                            Player 1
+                        </h2>
+
+                    </div>
+
+                    <div class="score">
+
+                        <span>SCORE</span>
+
+                        <strong id="scoreX">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- VS -->
+
+                <div class="vs-badge">
+                    VS
+                </div>
+
+
+                <!-- PLAYER O -->
+
+                <div class="player-card player-o">
+
+                    <div class="player-symbol">
+                        O
+                    </div>
+
+                    <div class="player-info">
+
+                        <span class="player-label">
+                            PLAYER 2
+                        </span>
+
+                        <h2 id="displayPlayerO">
+                            Player 2
+                        </h2>
+
+                    </div>
+
+                    <div class="score">
+
+                        <span>SCORE</span>
+
+                        <strong id="scoreO">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TURN INDICATOR -->
+
+            <div class="turn-indicator">
+
+                <span id="turnText">
+                    Player X's Turn
+                </span>
+
+            </div>
+
+
+            <!-- BOARD -->
+
+            <div class="board">
+
+                <button class="cell" data-index="0"></button>
+                <button class="cell" data-index="1"></button>
+                <button class="cell" data-index="2"></button>
+
+                <button class="cell" data-index="3"></button>
+                <button class="cell" data-index="4"></button>
+                <button class="cell" data-index="5"></button>
+
+                <button class="cell" data-index="6"></button>
+                <button class="cell" data-index="7"></button>
+                <button class="cell" data-index="8"></button>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div id="resultMessage" class="result-message">
+
+                <h2 id="resultTitle">
+                    X WINS!
+                </h2>
+
+                <p id="resultText">
+                    Congratulations!
+                </p>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="game-buttons">
+
+                <button
+                    id="newGameButton"
+                    class="game-button"
+                >
+                    NEW GAME
+                </button>
+
+                <button
+                    id="resetButton"
+                    class="game-button reset-button"
+                >
+                    RESET SCORE
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+            Made with ❤️ using HTML, CSS & JavaScript
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

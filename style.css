@@ -1,0 +1,1086 @@
+*
+
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+background:
+    radial-gradient(circle at 20% 20%, #243b55 0%, transparent 35%),
+    radial-gradient(circle at 80% 80%, #4b1f6f 0%, transparent 35%),
+    linear-gradient(135deg, #080b16, #111827, #090b13);
+
+color: #ffffff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    overflow-x: hidden;
+}
+
+
+/* ---------- BACKGROUND CIRCLES ---------- */
+
+.background-circle {
+    position: fixed;
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+.circle-one {
+    width: 300px;
+    height: 300px;
+
+    background: rgba(0, 217, 255, 0.12);
+
+    top: -100px;
+    left: -100px;
+}
+
+.circle-two {
+    width: 350px;
+    height: 350px;
+
+    background: rgba(168, 85, 247, 0.12);
+
+    bottom: -150px;
+    right: -100px;
+}
+
+
+/* ---------- MAIN CONTAINER ---------- */
+
+.game-container {
+    width: 100%;
+    max-width: 850px;
+
+    padding: 35px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.game-header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+/* X VS O logo */
+
+.logo {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 10px;
+}
+
+.logo-x,
+.logo-o {
+    font-size: 30px;
+
+    font-weight: 900;
+}
+
+.logo-x {
+    color: #22d3ee;
+
+    text-shadow:
+        0 0 10px rgba(34, 211, 238, 0.8),
+        0 0 30px rgba(34, 211, 238, 0.4);
+}
+
+.logo-o {
+    color: #c084fc;
+
+    text-shadow:
+        0 0 10px rgba(192, 132, 252, 0.8),
+        0 0 30px rgba(192, 132, 252, 0.4);
+}
+
+.logo-vs {
+    font-size: 12px;
+
+    font-weight: bold;
+
+    color: #94a3b8;
+}
+
+
+/* Main title */
+
+.game-header h1 {
+    font-size: clamp(35px, 6vw, 55px);
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #cbd5e1,
+        #ffffff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* Subtitle */
+
+.subtitle {
+    margin-top: 8px;
+
+    color: #94a3b8;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   SCORE SECTION
+   ========================================= */
+
+.score-section {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+/* Player card */
+
+.player-card {
+    flex: 1;
+
+    max-width: 300px;
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Player X card */
+
+.player-x-card {
+    border-color: rgba(34, 211, 238, 0.2);
+}
+
+
+/* Player O card */
+
+.player-o-card {
+    border-color: rgba(192, 132, 252, 0.2);
+}
+
+
+/* Hover */
+
+.player-card:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Player icon */
+
+.player-icon {
+    width: 50px;
+    height: 50px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 14px;
+
+    font-size: 25px;
+
+    font-weight: 900;
+}
+
+.player-x-card .player-icon {
+    background: rgba(34, 211, 238, 0.12);
+
+    color: #22d3ee;
+
+    border: 1px solid rgba(34, 211, 238, 0.3);
+}
+
+.player-o-card .player-icon {
+    background: rgba(192, 132, 252, 0.12);
+
+    color: #c084fc;
+
+    border: 1px solid rgba(192, 132, 252, 0.3);
+}
+
+
+/* Player information */
+
+.player-info {
+    min-width: 0;
+
+    flex: 1;
+}
+
+.player-label {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 4px;
+}
+
+.player-info h2 {
+    font-size: 16px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* Score */
+
+.score {
+    text-align: center;
+
+    padding-left: 8px;
+}
+
+.score-label {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 3px;
+}
+
+.score-number {
+    font-size: 25px;
+
+    font-weight: 900;
+}
+
+
+/* VS badge */
+
+.vs-badge {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 20px rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================
+   TURN INDICATOR
+   ========================================= */
+
+.turn-indicator {
+    width: fit-content;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 17px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* Turn dot */
+
+.turn-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22d3ee;
+
+    box-shadow:
+        0 0 8px #22d3ee;
+
+    animation: pulse 1.5s infinite;
+}
+
+
+/* =========================================
+   GAME BOARD
+   ========================================= */
+
+.board {
+    width: min(90vw, 480px);
+
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    padding: 10px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Board cell */
+
+.cell {
+    border: none;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.035)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: clamp(45px, 9vw, 75px);
+
+    font-weight: 900;
+
+    transition:
+        transform 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+}
+
+
+/* Empty cell hover */
+
+.cell:hover {
+    transform: scale(0.97);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.06)
+        );
+
+    border-color: rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+
+/* X styling */
+
+.cell.x {
+    color: #22d3ee;
+
+    text-shadow:
+        0 0 12px rgba(34, 211, 238, 0.8),
+        0 0 35px rgba(34, 211, 238, 0.35);
+
+    animation: markAppear 0.25s ease;
+}
+
+
+/* O styling */
+
+.cell.o {
+    color: #c084fc;
+
+    text-shadow:
+        0 0 12px rgba(192, 132, 252, 0.8),
+        0 0 35px rgba(192, 132, 252, 0.35);
+
+    animation: markAppear 0.25s ease;
+}
+
+
+/* Winning cells */
+
+.cell.winner {
+    animation:
+        winnerPulse 0.8s infinite alternate;
+}
+
+
+/* =========================================
+   RESULT MESSAGE
+   ========================================= */
+
+.result-message {
+    display: none;
+
+    text-align: center;
+
+    margin: 25px auto 0;
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    animation: resultAppear 0.4s ease;
+}
+
+
+.result-message.show {
+    display: block;
+}
+
+
+.result-icon {
+    font-size: 35px;
+
+    margin-bottom: 5px;
+}
+
+
+.result-message h2 {
+    font-size: 24px;
+
+    margin-bottom: 5px;
+}
+
+
+.result-message p {
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.button-section {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+
+.game-button {
+    border: none;
+
+    border-radius: 12px;
+
+    padding: 13px 22px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* New game */
+
+.new-game-button {
+    color: #061018;
+
+    background: linear-gradient(
+        135deg,
+        #22d3ee,
+        #67e8f9
+    );
+
+    box-shadow:
+        0 8px 25px rgba(34, 211, 238, 0.2);
+}
+
+
+.new-game-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(34, 211, 238, 0.35);
+}
+
+
+.new-game-button span {
+    font-size: 18px;
+
+    margin-right: 5px;
+}
+
+
+/* Reset */
+
+.reset-button {
+    color: #cbd5e1;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.reset-button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Button click */
+
+.game-button:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    letter-spacing: 0.5px;
+}
+
+
+.heart {
+    color: #f43f5e;
+
+    display: inline-block;
+
+    animation: heartbeat 1.3s infinite;
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+
+        transform: scale(0.75);
+    }
+}
+
+
+@keyframes markAppear {
+
+    0% {
+        opacity: 0;
+
+        transform: scale(0.5);
+    }
+
+    70% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+}
+
+
+@keyframes winnerPulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0.94);
+
+        box-shadow:
+            0 0 35px rgba(255, 255, 255, 0.18);
+    }
+}
+
+
+@keyframes resultAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 15px;
+    }
+
+    .game-container {
+        padding: 22px 15px;
+
+        border-radius: 22px;
+    }
+
+    .game-header {
+        margin-bottom: 22px;
+    }
+
+    .game-header h1 {
+        letter-spacing: 3px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+    }
+
+    .score-section {
+        gap: 7px;
+    }
+
+    .player-card {
+        padding: 10px;
+
+        gap: 8px;
+    }
+
+    .player-icon {
+        width: 40px;
+        height: 40px;
+
+        border-radius: 10px;
+
+        font-size: 20px;
+    }
+
+    .player-info h2 {
+        font-size: 12px;
+    }
+
+    .player-label {
+        font-size: 8px;
+    }
+
+    .score-label {
+        font-size: 7px;
+    }
+
+    .score-number {
+        font-size: 20px;
+    }
+
+    .vs-badge {
+        width: 32px;
+        height: 32px;
+
+        font-size: 9px;
+    }
+
+    .board {
+        gap: 7px;
+
+        padding: 7px;
+
+        border-radius: 18px;
+    }
+
+    .cell {
+        border-radius: 12px;
+    }
+
+    .button-section {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .game-button {
+        width: min(90%, 300px);
+    }
+}
+
+
+/* Small phones */
+
+@media (max-width: 380px) {
+
+    .game-container {
+        padding: 18px 10px;
+    }
+
+    .player-card {
+        padding: 8px;
+    }
+
+    .player-icon {
+        width: 34px;
+        height: 34px;
+
+        font-size: 17px;
+    }
+
+    .player-info h2 {
+        font-size: 10px;
+    }
+
+    .score-number {
+        font-size: 18px;
+    }
+}
+/* =========================================
+   PLAYER NAME SETUP
+   ========================================= */
+
+.player-setup {
+    text-align: center;
+    margin-top: 30px;
+    padding: 30px;
+}
+
+.player-setup h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.setup-subtitle {
+    color: #aeb7c7;
+    margin-bottom: 30px;
+}
+
+
+/* NAME INPUT AREA */
+
+.name-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+
+/* EACH PLAYER BOX */
+
+.name-box {
+    width: 220px;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+/* X / O SYMBOL */
+
+.player-symbol {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+.x-symbol {
+    color: #ff5c8a;
+    background: rgba(255, 92, 138, 0.12);
+}
+
+
+.o-symbol {
+    color: #5ce1ff;
+    background: rgba(92, 225, 255, 0.12);
+}
+
+
+/* LABEL */
+
+.name-box label {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* INPUT */
+
+.name-box input {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+
+.name-box input::placeholder {
+    color: #8b95a7;
+}
+
+
+.name-box input:focus {
+    border-color: #5ce1ff;
+}
+
+
+/* VS */
+
+.setup-vs {
+    font-size: 18px;
+    font-weight: bold;
+    color: #aeb7c7;
+}
+
+
+/* START GAME BUTTON */
+
+.start-game-button {
+    padding: 14px 35px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #5ce1ff,
+        #8b5cf6
+    );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+.start-game-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(92, 225, 255, 0.25);
+}
+
+
+/* HIDE GAME AREA BEFORE START */
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 650px) {
+
+    .name-inputs {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .setup-vs {
+        margin: 5px 0;
+    }
+
+    .name-box {
+        width: 100%;
+        max-width: 280px;
+    }
+
+}
